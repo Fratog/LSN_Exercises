@@ -1,1 +1,0 @@
-output_solid_epot.dat	output_solid_ekin.dat	output_solid_temp.dat	output_solid_etot.dat	output_solid_pres.dat
