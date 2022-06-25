@@ -1,0 +1,2 @@
+#iNVET restart temp npart rho rcut delta(5.5 MC, 0.0005 MD) nblk nstep phase
+1 0 1.2 108 0.05 5.0 5.5 20 1000 gas

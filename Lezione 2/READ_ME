@@ -1,0 +1,22 @@
+
+In Integral folder there is the all the material for the integral exercise
+In Rwalk folder there is the all the material for the random walk exercise 
+
+1) Integral estimation exercise
+
+	with ./run.sh you can
+	-compile the program with make (make)
+	-run the executable (./integral.x)
+	-move output files to data folder (the already existing files will be overwritten) (mv *.txt DATA/)
+	
+2) Random walk exercise
+
+	to compile: make
+	to run the executable: ./RW.x Nstep Nsim Nblocks dim
+		-Nstep range of random walk steps to study ([1,2, ... ,Nstep])
+		-Nsim number of random walk distances to sample to get the average distance estimate, at fixed number of step i in [1,2, ... ,Nstep]
+		-Nblocks number of blocks in which we divide the Nsim estimates, for data blocking
+		-dim dimension of the random walk
+		
+	./run.sh input: 
+	allows to compile, run and move the outputs to the DATA folder (the already existing files will be overwritten), for every line of the input file

@@ -1,0 +1,19 @@
+
+	to compile: make
+	to run the executable: ./MD.x
+	 
+		MD.x will read the file input.in to get its input values, those values establish the initialization of the model. 
+		I preperaed the following input files: 
+		input.gas.eq, input.solid.eq, input.liquid.eq -> to get istantenous values for studying equilibration
+		input.gas, input.solid, input.liquid -> to get block averages, starting from the already equilibrate configuration.
+		
+		So an example of run for the liquid phase would be:
+		
+		cp input.liquid.eq input.in
+		./MD.x
+		cp input.liquid input.in
+		./MD.x
+
+	I SUGGEST TO USE THE run.sh SCRIPT, since it deals with output files automatically
+	to obtain all the results for a given phase: : ./run.sh phase (e.g. ./run.sh liquid) 
+		phase must be one of: solid, liquid, gas	

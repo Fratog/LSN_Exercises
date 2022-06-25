@@ -1,0 +1,2 @@
+#iNVET restart temp npart rho rcut delta(MC 0.1, 0.0005 MD) nblk nstep phase
+0 1 1.5 108 1.1 2.2 0.0005 20 2000 solid 

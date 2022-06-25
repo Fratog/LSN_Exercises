@@ -1,0 +1,29 @@
+
+	-to compile: make
+	
+	-to run the executable: ./Molecular.x
+		A)the program opens the input file input.in in runtime and use its values for initialization
+		B)in Averages() function in MD_MC.cpp there are two flags, obs_flag, gr_flag that can be modified to choose which observabes we want to compute. 
+
+	-all the results can be obtained using the script run.sh: ./run.sh Tofev Nblocks Nsteps_x_block
+		with:
+			Tofev: is the type of move, MC for Monte Carlo, MD for Verlet.
+			Nblocks: number of blocks
+			Nsteps_x_blocks: number of Monte Carlo steps per block
+			
+		the script prepares the file input.in with the values found in  
+			input.gas input.solid input.liquid (if Tofev=MC) 
+			input.gas.verlet input.solid.verlet input.liquid.verlet (if Tofev=MD) 
+		but also adding the custom values passed to the script: Tofev, Nblocks and Nsteps_x_block.
+		
+		then the script launch ./Molecular.x
+		
+		run.sh does NOT move automatically the ouputs to the correct folders, they must be moved by hand 
+		
+	-after having studied the equilibration process I added the following two lines in the main after the Input() call:
+		for(int i=0; i<2000; i++)
+			Move()
+		which guarantee the equilibration.
+		if you wish to study the equilibration process comment these lines.	
+		
+	

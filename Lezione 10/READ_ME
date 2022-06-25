@@ -1,0 +1,59 @@
+1)	
+		The prorgram can be compiled with make 
+
+2) 
+		Executed by mpiexec -np ncores main.out flag row1 row2 Ncities select 
+		Es. mpiexec -np 8 main.out 1 12312 921 34 2
+		
+		ncores is an input parameter of mpiexec, it corresponds to the number of cores used in the parallelization
+		The executable needs the following input parameters
+			
+			flag: 1 for parallelization with communication, 0 for trivial parallelization
+			row1: int from 1 to 30000, selects the prime numbers row to set the random generator in cities object
+			row2: analogous but with population object (there is even a rank dependece to have cores with statistically independet GA evolutions)
+			Ncities: number of cities
+			select: 1 for simulated annealing selection operator, 2 for standard selection operator
+						
+3)
+		For studying how the best path changes using parallelization with N cores (from 2 to 8) we can use ./run.sh
+		with the following input parameters ./run.sh flag row1 row2 Ncities select  (flag here must be 1) 
+		
+4)
+		For performing the analysis of E[d_min] with 8 cores parallelization we use ./run2.sh.
+		
+		./run2.sh inputfile	
+		run the program main.out with parameters given by the rows of the inputfile.
+		
+		inputfile: -------> ./run.sh inputfile
+		line1								mpiexec -np 8 main.out line1
+		line2								mpiexec -np 8 main.out line2
+		...									...
+		
+		./run2.sh input_8cores_SA.dat
+		./run2.sh input_8cores_Standard.dat
+		
+________________________________________________________________________________________________________________________________________________
+
+ATTENTION: when passing from analysis 3 to 4 we need to modify the main, in order to print on the correct ouput files, it is sufficent to change the commented lines 126 127 129 130
+
+for analysis 3:
+if(select==1)
+			//out.open("fit_8cores_SA.txt", ios::app);
+			out.open("fit_varying_ncores_" + to_string(Ncities) + "_SA.txt", ios::app);
+		else if(select==2)
+			//out.open("fit_8cores_Standard.txt", ios::app);
+			out.open("fit_varying_ncores_" + to_string(Ncities) + "_Standard.txt", ios::app);
+		else
+			cout<<"error in opening output file"<<endl;
+
+for analysis 4:
+if(select==1)
+			out.open("fit_8cores_SA.txt", ios::app);
+			//out.open("fit_varying_ncores_" + to_string(Ncities) + "_SA.txt", ios::app);
+		else if(select==2)
+			out.open("fit_8cores_Standard.txt", ios::app);
+			//out.open("fit_varying_ncores_" + to_string(Ncities) + "_Standard.txt", ios::app);
+		else
+			cout<<"error in opening output file"<<endl;
+
+		

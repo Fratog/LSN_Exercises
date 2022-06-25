@@ -1,0 +1,40 @@
+
+	-to compile: make
+	
+	-to run the executable: ./Monte_Carlo_ISING_1D.x temp nspin J h metro nblk nstep restart
+		where	:
+		temp is the temperature
+		nspin is the number of spin
+		J is the Hamiltonian coupling
+		h is the extern magnetic field
+		metro is a flag, 1 for Metropolis sampling 0 for Gibbs sampling
+		nblk is the number of blocks
+		nstep is the total number of step per block
+		restart is a flag, 1 for restaring from previous configuration, 0 for new initialization
+		
+	-to get the equilibration results we used: ./run_eq.sh Nist_values
+		where	: 
+		Nist_values is the number of istanentous values to get to check the equilbration using energy as observable of reference.
+	
+		After having found the equilibration time we added the following lines
+		
+		for(int i=0; i<2000; i++) //equilibration
+			Move(metro);
+			
+		immediately after the Initialization in the main. This way every run will be equilibrated and we don't have to worry about it.
+		So if you wish to study the equilibration process, comment these two lines.
+		
+	-to get the observables prediction we used: ./run.sh input.dat samp_flag h
+		where:
+		input.dat is a file containg the values of, temp nspin J h metro nblk nstep restart, to pass to the executable. 
+		samp_flag is a flag, use M for Metropolis sampling, G for Gibbs sampling
+		h is the external magnetic field
+		
+		all the results in DATA/Metropolis and DATA/Gibbs are obtained and moved to the correct folder with the following commands:
+		./Monte_Carlo_ISING_1D.x input.dat M 0
+		./Monte_Carlo_ISING_1D.x input.dat M 0.02
+		./Monte_Carlo_ISING_1D.x input.dat G 0
+		./Monte_Carlo_ISING_1D.x input.dat G 0.02
+		
+		ATTENTION: if you want to work with zero external magnetic field pass as input 0 and not 0.0 or any other floating point 0
+		(if 0.0 is used there is a problem in the run.sh script I still haven't corrected).

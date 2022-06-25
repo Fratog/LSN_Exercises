@@ -1,0 +1,46 @@
+1)	
+		The prorgram can be compiled with make 
+
+2) 
+		Executed by ./main.x row1 row2 Ncities L 
+		Es. ./main.x 12312 921 34 1
+
+		The executable needs the following input parameters
+			
+			row1: int from 1 to 30000, selects the prime numbers row to set the random generator in cities object
+			row2: analogous but with population object
+			Ncities: number of cities
+			L: legtnh of square side
+			
+			An additional parameter can be added, this one allows to choose the type of selection operator
+			1 for selection operator based on simulated annealing
+			2 for the standard selection operator which works on a fitness-ordered population
+			if not passed the program choose the standard selection operator as default
+			./main.x 12312 921 34 1 1 ------> simulated annealing operator
+			./main.x 12312 921 34 1 2 ------> standard operator
+			./main.x 12312 921 34 1   ------> standard operator
+			
+	
+3)
+		./run.sh inputfile	
+		run the program main.x with parameters given by the rows of the inputfile.
+		
+		inputfile: -------> ./run.sh inputfile
+		line1								./main.x line1
+		line2								./main.x line2
+		...									...
+		
+
+4) the program has two outputs: 
+
+		A)fit_square.txt : here there is the best fit of each generation and average fit on best half of the population at every generation.
+		
+		B)bound_fixedL.txt or bound_fixedL_SA.txt (depending on the selection operator choosen): 
+		  it contains the best fit of the whole GA evolution. We are interested in this ouput only if we do multiple runs with ./run.sh inputfile
+			if we use ./run.sh inputfile it will contain the best fit found for every execution with inputs given by inputfile rows.
+			it is the ouput file we use to study the expected value of the minimum distance for N cities in a square of length 1.	
+			
+		C) e.g. 
+			to obtain fit_square.txt: 				./main.x row1 row2 34 1
+			to obtain bound_fixedL.txt: 			./run.sh input_fixedL.dat
+			to obtain bound_fixedL_SA.txt:  	./run.sh input_fixedL_SA.dat

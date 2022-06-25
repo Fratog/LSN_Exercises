@@ -1,0 +1,3 @@
+here there are the istantaneous values obtained for all different observarbles. We will plot only the eenergy per particle to study the equilibration process. 
+
+These data were obtained with ./run_eq.sh MC 1000

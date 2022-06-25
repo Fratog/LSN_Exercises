@@ -1,0 +1,4 @@
+
+	-to compile: make
+	-to run the exectuable: ./stoc_opt.x
+	-to move the ouputs to the DATA/ folder: mv *.txt DATA/   or make move
