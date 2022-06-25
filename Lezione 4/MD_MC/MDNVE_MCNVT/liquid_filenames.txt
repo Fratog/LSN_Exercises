@@ -1,1 +1,0 @@
-output_liquid_epot.dat	output_liquid_ekin.dat	output_liquid_temp.dat	output_liquid_etot.dat	output_liquid_pres.dat
